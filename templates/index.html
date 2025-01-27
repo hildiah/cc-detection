@@ -1,29 +1,25 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deteksi Penyakit Citrus Canker</title>
+    <title>Home - Citrus Canker Detection</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <header>
-        <h1>Deteksi Penyakit Citrus Canker pada Buah Jeruk</h1>
+        <h1>Citrus Canker Detection</h1>
     </header>
 
-    <div class="main-content">
+    <div class="container">
         {% if 'user_id' in session %}
-            <p>Selamat datang, Anda sudah login!</p>
-            <a href="{{ url_for('detection') }}">
-                <button>Unggah Gambar untuk Deteksi</button>
-            </a>
+            <a href="{{ url_for('detection') }}">Go to Detection</a> <br>
+            <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
         {% else %}
-            <p>Silakan <a href="{{ url_for('login') }}">login</a> atau <a href="{{ url_for('register') }}">daftar</a> terlebih dahulu.</p>
+            <a href="{{ url_for('login') }}">Login</a> | <a href="{{ url_for('register') }}">Register</a>
         {% endif %}
     </div>
 
-    <footer>
-        <p>&copy; 2025 Deteksi Penyakit Citrus Canker</p>
-    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

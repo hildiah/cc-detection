@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deteksi Penyakit Jeruk</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+<body>
+    <!-- Halaman deteksi -->
+    <h1>Deteksi Penyakit Citrus Canker pada Jeruk</h1>
+
+    <!-- Form Unggah Gambar -->
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" id="image-upload" name="image" accept="image/*" required>
+        <button type="submit">Unggah Gambar</button>
+    </form>
+
+    <!-- Menampilkan Hasil Deteksi -->
+    <div id="result-container">
+        {% if image_path %}
+        <h2>Hasil Deteksi:</h2>
+        <img id="result-image" src="{{ url_for('static', filename=image_path) }}" alt="Hasil Deteksi" width="500">
+        <h3>Ekstraksi Fitur:</h3>
+        <ul>
+            <li><strong>File Name:</strong> {{ file_name }}</li>
+            <li><strong>Mean R:</strong> {{ mean_r }}</li>
+            <li><strong>Mean G:</strong> {{ mean_g }}</li>
+            <li><strong>Mean B:</strong> {{ mean_b }}</li>
+            <li><strong>Contrast:</strong> {{ contrast }}</li>
+            <li><strong>Spot Count:</strong> {{ spot_count }}</li>
+            <li><strong>Spot Area:</strong> {{ spot_area }}</li>
+        </ul>
+        <button id="save-button">Simpan Hasil Gambar</button>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Deteksi Penyakit Citrus Canker</p>
+    </footer>
+</body>
+</html>
