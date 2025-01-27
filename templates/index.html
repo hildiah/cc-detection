@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deteksi Penyakit Citrus Canker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Deteksi Penyakit Citrus Canker pada Buah Jeruk</h1>
+    </header>
+
+    <div class="main-content">
+        {% if 'user_id' in session %}
+            <p>Selamat datang, Anda sudah login!</p>
+            <a href="{{ url_for('detection') }}">
+                <button>Unggah Gambar untuk Deteksi</button>
+            </a>
+        {% else %}
+            <p>Silakan <a href="{{ url_for('login') }}">login</a> atau <a href="{{ url_for('register') }}">daftar</a> terlebih dahulu.</p>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Deteksi Penyakit Citrus Canker</p>
+    </footer>
+</body>
+</html>
