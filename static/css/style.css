@@ -1,0 +1,77 @@
+/* styles.css */
+
+/* Reset beberapa margin dan padding untuk semua elemen */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Mengatur font dasar */
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: #4B5945;  /* Warna teks utama */
+}
+
+/* Desain untuk tombol */
+button {
+    background-color: #91AC8F; /* Warna tombol */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #66785F; /* Warna saat hover */
+}
+
+/* Mengatur header halaman */
+header {
+    background-color: #4B5945;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+/* Halaman utama (Home) */
+h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Gaya untuk form login dan registrasi */
+form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"], input[type="password"], input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Desain untuk tombol logout */
+.logout-button {
+    background-color: #FF5C5C;
+    padding: 10px 20px;
+    color: white;
+    text-align: center;
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.logout-button:hover {
+    background-color: #D9534F;
+}
