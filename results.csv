@@ -1,0 +1,41 @@
+import csv
+import os
+
+# Fungsi untuk menyimpan hasil ekstraksi fitur ke dalam file CSV
+def save_features_to_csv(features, filename='results.csv'):
+    header = ['File_Name', 'Mean_R', 'Mean_G', 'Mean_B', 'Contrast', 'Spot_Count', 'Spot_Area']
+    row = [
+        features['file_name'],
+        features['mean_r'],
+        features['mean_g'],
+        features['mean_b'],
+        features['contrast'],
+        features['spot_count'],
+        features['spot_area']
+    ]
+    
+    # Memeriksa apakah file CSV sudah ada atau belum
+    file_exists = os.path.exists(filename)
+    
+    # Menyimpan hasil dalam file CSV
+    with open(filename, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        
+        # Jika file belum ada, tambahkan header
+        if not file_exists:
+            writer.writerow(header)
+        
+        # Menambahkan baris hasil ekstraksi fitur ke CSV
+        writer.writerow(row)
+
+# Contoh penggunaan
+features = {
+    'file_name': 'image1.jpg',
+    'mean_r': 123.5,
+    'mean_g': 143.2,
+    'mean_b': 156.1,
+    'contrast': 32.5,
+    'spot_count': 3,
+    'spot_area': 500
+}
+save_features_to_csv(features)
