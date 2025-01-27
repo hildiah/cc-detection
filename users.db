@@ -1,0 +1,50 @@
+import sqlite3
+
+# Fungsi untuk membuat database dan tabel pengguna
+def create_db():
+    conn = sqlite3.connect('users.db')  # Membuat koneksi ke database
+    c = conn.cursor()
+    
+    # Membuat tabel 'users' jika belum ada
+    c.execute('''CREATE TABLE IF NOT EXISTS users (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    username TEXT NOT NULL,
+                    password TEXT NOT NULL
+                 )''')
+    conn.commit()  # Menyimpan perubahan
+    conn.close()  # Menutup koneksi
+
+# Fungsi untuk menambahkan pengguna baru ke database
+def add_user(username, password):
+    conn = sqlite3.connect('users.db')
+    c = conn.cursor()
+    
+    # Menambahkan pengguna baru
+    c.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, password))
+    conn.commit()
+    conn.close()
+
+# Fungsi untuk memverifikasi login pengguna
+def verify_user(username, password):
+    conn = sqlite3.connect('users.db')
+    c = conn.cursor()
+    
+    # Memeriksa apakah ada pengguna dengan username dan password yang sesuai
+    c.execute('SELECT * FROM users WHERE username = ? AND password = ?', (username, password))
+    user = c.fetchone()
+    conn.close()
+    
+    return user  # Mengembalikan data pengguna jika ditemukan, atau None jika tidak ditemukan
+
+# Membuat database dan tabel pengguna
+create_db()
+
+# Menambahkan pengguna baru (contoh)
+add_user('admin', 'admin123')  # Menambahkan username 'admin' dengan password 'admin123'
+
+# Memverifikasi login pengguna (contoh)
+user = verify_user('admin', 'admin123')
+if user:
+    print(f"User {user[1]} berhasil login!")
+else:
+    print("Invalid username or password")
